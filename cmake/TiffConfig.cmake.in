@@ -20,6 +20,18 @@ set(TIFF_INCLUDE_DIRS ${TIFF_INCLUDE_DIR})
 
 set(TIFF_LIBRARIES TIFF::tiff)
 
+message(STATUS "appending ${CMAKE_CURRENT_LIST_DIR}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
+
+find_package(ZZ REQUIRED)
+message(STATUS "ZZ found")
+
+find_package(ZLIB REQUIRED)
+# find_package(Deflate)
+find_package(lolzma REQUIRED)
+find_package(JPEG REQUIRED)
+find_package(CMath REQUIRED)
+
 if(NOT TARGET TIFF::tiff)
     include("${_DIR}/TiffTargets.cmake")
 endif()
